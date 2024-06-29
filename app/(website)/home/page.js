@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "@/components/Cards";
 import News from "@/components/News";
-import dotenv from "dotenv";
 
 export default function HomePage() {
   const [articles, setArticles] = useState("");

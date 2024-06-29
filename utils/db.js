@@ -1,6 +1,6 @@
 // utils/db.js
 import { Pool } from "pg";
-import dotenv from "dotenv";
+
 const fs = require("fs");
 
 dotenv.config();
