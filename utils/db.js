@@ -1,8 +1,9 @@
 // utils/db.js
 import { Pool } from "pg";
-
+import dotenv from "dotenv";
 const fs = require("fs");
 
+dotenv.config();
 export const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
