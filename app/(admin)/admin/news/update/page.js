@@ -10,7 +10,7 @@ const UpdateDeletePage = () => {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.get("httpss://localhost:3000/api/news");
+        const result = await axios.get("http://localhost:3000/api/news");
         setnews(result.data);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -22,7 +22,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://localhost:3000/api/news/${id}`);
+      await axios.delete(`http://localhost:3000/api/news/${id}`);
       setnews(news.filter((news) => news.id !== id));
     } catch (error) {
       console.error("Error deleting news:", error);

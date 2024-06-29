@@ -10,7 +10,7 @@ const UpdateDeletePage = () => {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.get("https://localhost:3000/api/articles");
+        const result = await axios.get("http://localhost:3000/api/articles");
         setArticles(result.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
@@ -22,7 +22,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://localhost:3000/api/articles/${id}`);
+      await axios.delete(`http://localhost:3000/api/articles/${id}`);
       setArticles(articles.filter((article) => article.id !== id));
     } catch (error) {
       console.error("Error deleting article:", error);
@@ -40,7 +40,7 @@ const UpdateDeletePage = () => {
   const handleSave = async (id) => {
     const article = articles.find((article) => article.id === id);
     try {
-      await axios.put(`https://localhost:3000/api/articles/${id}`, article);
+      await axios.put(`http://localhost:3000/api/articles/${id}`, article);
       alert("Article updated successfully!");
     } catch (error) {
       console.error("Error saving updates:", error);

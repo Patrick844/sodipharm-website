@@ -36,7 +36,7 @@ const Navbar = () => {
               <span className="sr-only">Open main menu</span>
               <svg
                 className={`${isOpen ? "hidden" : "block"} h-6 w-6`}
-                xmlns="https://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -51,7 +51,7 @@ const Navbar = () => {
               </svg>
               <svg
                 className={`${isOpen ? "block" : "hidden"} h-6 w-6`}
-                xmlns="https://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
