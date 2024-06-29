@@ -1,6 +1,7 @@
 // utils/db.js
 import { Pool } from "pg";
 import dotenv from "dotenv";
+const fs = require("fs");
 
 dotenv.config();
 console.log(process.env.DB_SSL_CA);
@@ -16,9 +17,9 @@ export const pool = new Pool({
   },
 });
 export const pool_uri = new Pool({
-  connectionString: process.env.DB_UR,
+  connectionString: process.env.DB_URI,
   ssl: {
-    rejectUnauthorized: false,
-    ca: process.env.DB_SSL_CA,
+    rejectUnauthorized: true,
+    ca: process.env.DB_CA,
   },
 });
