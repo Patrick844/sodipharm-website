@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "echo $DB_URI && echo $DB_CA && next build",
     "start": "next start",
     "lint": "next lint"
   },

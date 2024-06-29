@@ -9,8 +9,9 @@ import News from "@/components/News";
 export default function HomePage() {
   const [articles, setArticles] = useState("");
   const [news, setnews] = useState("");
-  console.log("testtt");
   console.log(process.env.DB_CA);
+  console.log(process.env.DB_CfA);
+
   useEffect(() => {
     const fetchArticles = async () => {
       try {
