@@ -3,8 +3,6 @@ import { Pool } from "pg";
 
 const fs = require("fs");
 
-dotenv.config();
-console.log(process.env.DB_SSL_CA);
 export const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
