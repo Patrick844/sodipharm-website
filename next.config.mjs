@@ -1,4 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+// next.config.js
+import { defineConfig } from "next";
 
-export default nextConfig;
+const config = defineConfig({
+  env: {
+    DB_URI: process.env.DB_URI,
+    DB_CA: process.env.DB_CA,
+  },
+});
+
+export default config;
