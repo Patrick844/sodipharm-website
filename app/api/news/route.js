@@ -1,11 +1,12 @@
 // app/api/articles.js
 
 import { NextResponse } from "next/server";
-import pool from "@/utils/db";
+import { pool, pool_uri } from "@/utils/db";
 
 export async function GET() {
   try {
-    const result = await pool.query("SELECT * FROM news");
+    // const result = await pool.query("SELECT * FROM news");
+    const result = await pool_uri.query("SELECT * FROM news");
 
     return NextResponse.json(result.rows);
   } catch (err) {
@@ -21,7 +22,8 @@ export async function POST(req, res) {
     INSERT INTO news(description, date)
     VALUES($1, $2)`; // Use RETURNING * to get inserted data back if needed
 
-    const result = await pool.query(query, [description, date]);
+    // const result = await pool.query(query, [description, date]);
+    const result = await pool_uri.query(query, [description, date]);
     return NextResponse.json({ message: "success" });
   } catch (err) {
     console.error("Error fetching news:", err);

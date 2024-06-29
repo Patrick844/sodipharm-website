@@ -1,23 +1,13 @@
 // app/api/articles.js
 
 import { NextResponse } from "next/server";
-import { Pool } from "pg";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
+import { pool, pool_uri } from "@/utils/db";
 
 export async function GET() {
   try {
-    const client = await pool.connect();
-    const result = await client.query("SELECT * FROM article");
+    // const result = await pool.query("SELECT * FROM article");
+    const result = await pool_uri.query("SELECT * FROM article");
+
     client.release();
     return NextResponse.json(result.rows);
   } catch (err) {

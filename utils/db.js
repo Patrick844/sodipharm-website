@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 console.log(process.env.DB_SSL_CA);
-const pool = new Pool({
+export const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
@@ -15,5 +15,10 @@ const pool = new Pool({
     ca: process.env.DB_SSL_CA,
   },
 });
-
-export default pool;
+export const pool_uri = new Pool({
+  connectionString: process.env.DB_UR,
+  ssl: {
+    rejectUnauthorized: false,
+    ca: process.env.DB_SSL_CA,
+  },
+});
