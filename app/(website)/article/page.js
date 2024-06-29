@@ -18,7 +18,7 @@ const ArticlesPage = () => {
     fetchData();
   }, []);
   const article_obj = articles.map((article, index) => (
-    <div className="px-5 mx-2 my-5 sm:mx-4 flex-col sm:h-14 sm:mt-10 shadow-md shadow-gray-300 border-1 border-solid border-black bg-gray-100 rounded-md flex sm:flex-row sm:items-center sm:justify-evenly">
+    <div className="px-5 mx-2 sm:my-5 sm:mx-4 flex-col sm:h-14 sm:mt-10 mt-12 shadow-md shadow-gray-300 border-1 border-solid border-black bg-gray-100 rounded-md flex sm:flex-row sm:items-center sm:justify-evenly">
       <div className="text-center">
         <span className="font-bold pr-3">Title:</span> {article.title}
       </div>
@@ -35,7 +35,7 @@ const ArticlesPage = () => {
   console.log(article_obj);
   return (
     <div>
-      <h1 className="mt-16 pt-4 sm:text-6xl text-3xl font-bold text-center">
+      <h1 className="sm:mt-16 mt-48 pt-4 sm:text-6xl text-3xl font-bold text-center">
         Articles
       </h1>
 

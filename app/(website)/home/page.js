@@ -54,14 +54,18 @@ export default function HomePage() {
         <p className="inline text-5xl px-4 ">News</p>
         <hr className="w-1/4 border-t-2 border-gray-300 my-4" />
       </div>
-      <div className="flex flex-col ml-40 justify-evenly mb-7">{news}</div>
+      <div className="flex flex-col ml-10  sm:ml-40 justify-evenly mb-7">
+        {news}
+      </div>
       <div className="flex justify-evenly mb-7"></div>
       <div className="text-center flex justify-center items-center my-8">
         <hr className="w-1/4 border-t-2 border-gray-300 my-4" />
         <p className="inline text-5xl px-4 ">Articles</p>
         <hr className="w-1/4 border-t-2 border-gray-300 my-4" />
       </div>
-      <div className="flex justify-evenly mb-7">{articles}</div>
+      <div className="flex flex-col px-3 sm:justify-evenly mb-7">
+        {articles}
+      </div>
     </div>
   );
 }
