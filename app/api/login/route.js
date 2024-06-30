@@ -48,17 +48,11 @@ export async function POST(req, res) {
     }
 
     // Successful login
-    const response = NextResponse.json(
-      { message: "Logged in successfully" },
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      }
-    );
 
+    console.log(process.env.NEXT_PUBLIC_URL);
+    const response = NextResponse.redirect(
+      process.env.NEXT_PUBLIC_URL + "admin/dashbord/main"
+    );
     // Set the auth-token cookie
     response.cookies.set("auth-token", user.id, {
       path: "/",
