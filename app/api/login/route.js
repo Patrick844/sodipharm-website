@@ -1,14 +1,15 @@
-import { compare } from "bcrypt";
-import { pool, pool_uri, client } from "@/utils/db";
+import { pool_uri } from "@/utils/db";
 import { NextResponse } from "next/server";
+import cors from "@/utils/cors";
 
 export async function POST(req, res) {
   const { username, password } = await req.json();
 
   try {
-    // const result = await pool.query("SELECT * FROM users WHERE username = $1", [
-    //   username,
-    // ]);
+    const corsResponse = cors(req);
+    if (req.method === "OPTIONS") {
+      return corsResponse;
+    }
 
     const result = await pool_uri.query(
       "SELECT * FROM users WHERE username = $1",
@@ -31,6 +32,7 @@ export async function POST(req, res) {
 
     const user = result.rows[0];
 
+    // Simplified password comparison for demo purposes (not secure)
     const isValidPassword = user.password === password;
 
     if (!isValidPassword) {
@@ -48,10 +50,8 @@ export async function POST(req, res) {
     }
 
     // Successful login
-
-    console.log(process.env.NEXT_PUBLIC_URL);
     const response = NextResponse.redirect(
-      process.env.NEXT_PUBLIC_URL + "admin/dashbord/main",
+      process.env.NEXT_PUBLIC_URL + "/admin/dashbord/main",
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -84,4 +84,12 @@ export async function POST(req, res) {
       }
     );
   }
+}
+
+function cors(req) {
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  };
 }
