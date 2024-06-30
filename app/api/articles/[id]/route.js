@@ -13,7 +13,13 @@ export async function PUT(req, { params }) {
       "UPDATE articles SET title = $1, url = $2, keywords = $3 WHERE id = $4 RETURNING *",
       [title, url, keywords, id]
     );
-    return NextResponse.json(result.rows[0]);
+    return NextResponse.json(result.rows[0], {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
   } catch (error) {
     return NextResponse.error(error.message);
   }
@@ -25,7 +31,16 @@ export async function DELETE(req, { params }) {
     // await pool.query("DELETE FROM articles WHERE id = $1", [id]);
     await pool_uri.query("DELETE FROM articles WHERE id = $1", [id]);
 
-    return NextResponse.json({ message: "Article deleted successfully" });
+    return NextResponse.json(
+      { message: "Article deleted successfully" },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      }
+    );
   } catch (error) {
     return NextResponse.error(error.message);
   }
