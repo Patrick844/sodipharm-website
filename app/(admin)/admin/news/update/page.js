@@ -24,7 +24,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(NEXT_PUBLIC_URL + `api/news/${id}`, {
+      await axios.delete(process.env.NEXT_PUBLIC_URL + `api/news/${id}`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -46,7 +46,7 @@ const UpdateDeletePage = () => {
   const handleSave = async (id) => {
     const newss = news.find((item) => item.id === id);
     try {
-      await axios.put(NEXT_PUBLIC_URL + `api/news/${id}`, newss, {
+      await axios.put(process.env.NEXT_PUBLIC_URL + `api/news/${id}`, newss, {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",

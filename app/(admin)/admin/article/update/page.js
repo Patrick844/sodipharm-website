@@ -24,7 +24,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(NEXT_PUBLIC_URL + `api/articles/${id}`, {
+      await axios.delete(process.env.NEXT_PUBLIC_URL + `api/articles/${id}`, {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -48,13 +48,17 @@ const UpdateDeletePage = () => {
   const handleSave = async (id) => {
     const article = articles.find((article) => article.id === id);
     try {
-      await axios.put(NEXT_PUBLIC_URL + `api/articles/${id}`, article, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      });
+      await axios.put(
+        process.env.NEXT_PUBLIC_URL + `api/articles/${id}`,
+        article,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          },
+        }
+      );
       alert("Article updated successfully!");
     } catch (error) {
       console.error("Error saving updates:", error);
