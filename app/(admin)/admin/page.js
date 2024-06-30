@@ -20,8 +20,10 @@ const Login = () => {
     );
 
     console.log("teygyzegzyegzyegzeyzezyegz");
+    console.log("status ", res.status);
 
     if (res.status === 200) {
+      console.log("heloo");
       setSuccess(data.message);
       setError("");
       router.push("admin/main");
