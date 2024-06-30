@@ -13,15 +13,24 @@ export async function PUT(req, { params }) {
       "UPDATE articles SET title = $1, url = $2, keywords = $3 WHERE id = $4 RETURNING *",
       [title, url, keywords, id]
     );
-    return NextResponse.json(result.rows[0], {
+    return NextResponse.json(
+      { message: result.rows[0] },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      }
+    );
+  } catch (error) {
+    return NextResponse.error(error.message, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
     });
-  } catch (error) {
-    return NextResponse.error(error.message);
   }
 }
 
@@ -42,6 +51,12 @@ export async function DELETE(req, { params }) {
       }
     );
   } catch (error) {
-    return NextResponse.error(error.message);
+    return NextResponse.error(error.message, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
   }
 }
