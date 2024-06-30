@@ -24,13 +24,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(process.env.NEXT_PUBLIC_URL + `api/articles/${id}`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      });
+      await axios.delete(process.env.NEXT_PUBLIC_URL + `api/articles/${id}`);
       setArticles(articles.filter((article) => article.id !== id));
     } catch (error) {
       console.error("Error deleting article:", error);

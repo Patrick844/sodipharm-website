@@ -34,14 +34,7 @@ const ArticleFormAdd = () => {
     const data = JSON.stringify(formData);
     const result = await axios.post(
       process.env.NEXT_PUBLIC_URL + "api/articles",
-      data,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      }
+      data
     );
     if (result.status === 200) {
       setBannerMessage("Article added successfully!");

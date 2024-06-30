@@ -31,17 +31,7 @@ const NewsForm = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const data = JSON.stringify(formData);
-    const result = await axios.post(
-      process.env.NEXT_PUBLIC_URL + "api/news",
-      data,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      }
-    );
+    const result = await axios.post(process.env.NEXT_PUBLIC_URL + "api/news");
     if (result.status === 200) {
       setBannerMessage("News added successfully!");
       setIsBannerVisible(true);

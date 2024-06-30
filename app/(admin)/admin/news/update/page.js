@@ -24,13 +24,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(process.env.NEXT_PUBLIC_URL + `api/news/${id}`, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      });
+      await axios.delete(process.env.NEXT_PUBLIC_URL + `api/news/${id}`);
       setnews(news.filter((news) => news.id !== id));
     } catch (error) {
       console.error("Error deleting news:", error);
@@ -46,13 +40,7 @@ const UpdateDeletePage = () => {
   const handleSave = async (id) => {
     const newss = news.find((item) => item.id === id);
     try {
-      await axios.put(process.env.NEXT_PUBLIC_URL + `api/news/${id}`, newss, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      });
+      await axios.put(process.env.NEXT_PUBLIC_URL + `api/news/${id}`, newss);
       alert("News updated successfully!");
     } catch (error) {
       console.error("Error saving updates:", error);
