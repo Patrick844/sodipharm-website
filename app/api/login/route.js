@@ -9,14 +9,12 @@ export async function POST(req, res) {
     // const result = await pool.query("SELECT * FROM users WHERE username = $1", [
     //   username,
     // ]);
-    console.log("login");
 
     const result = await pool_uri.query(
       "SELECT * FROM users WHERE username = $1",
       [username]
     );
 
-    console.log("rejreirjrijriejreijreirjerijerierjeirje");
     if (result.rows.length === 0) {
       return NextResponse.json(
         { message: "Invalid username or password" },

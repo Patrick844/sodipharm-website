@@ -19,14 +19,10 @@ const Login = () => {
       data
     );
 
-    console.log("teygyzegzyegzyegzeyzezyegz");
-    console.log("status ", res.status);
-
     if (res.status === 200) {
-      console.log("heloo");
       setSuccess(data.message);
       setError("");
-      router.push("admin/main");
+      router.push("admin/dashbord/main");
     } else {
       setError(data.message);
       setSuccess("");

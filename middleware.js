@@ -19,5 +19,5 @@ export function middleware(req) {
 
 // Specify the paths to be protected
 export const config = {
-  matcher: ["/admin/:path(.*)"],
+  matcher: ["/admin/dashbord/:path(.*)"],
 };
