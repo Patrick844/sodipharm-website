@@ -6,7 +6,7 @@ export function middleware(req) {
     const token = req.cookies.get("auth-token");
     console.log("middleware");
     console.log(token);
-    console.warn(token);
+    console.warn(req.cookies());
     console.warn("middeware");
 
     // Check if the request is for a protected route
