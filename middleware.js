@@ -7,6 +7,7 @@ export function middleware(req) {
     console.log("middleware");
     console.log(token);
     console.warn(token);
+    console.warn("middeware");
 
     // Check if the request is for a protected route
     if (url.pathname.startsWith("/admin/dashbord/main") && !token) {
