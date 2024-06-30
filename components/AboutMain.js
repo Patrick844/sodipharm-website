@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AboutMain() {
   return (
-    <div className="flex flex-col items-center justify-center py-2 bg-gray-100 overflow-hidden  sm:mt-16 ">
+    <div className="flex flex-col items-center justify-center py-2 bg-gray-100 overflow-hidden mt-16 sm:mt-16 ">
       <main className="flex flex-col items-center w-screen flex-1 px-20 text-center">
         <h1 className="sm:text-6xl text-3xl font-bold mt-4">About Us</h1>
         <p className="sm:mt-3 mt-7 sm:text-2xl text-lg">
