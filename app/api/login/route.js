@@ -49,8 +49,8 @@ export async function POST(req, res) {
     }
 
     // Successful login
-    return NextResponse.json(
-      { message: "Login successful", success: true },
+    const response = NextResponse.json(
+      { message: "Logged in successfully" },
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -59,6 +59,16 @@ export async function POST(req, res) {
         },
       }
     );
+
+    // Set the auth-token cookie
+    response.cookies.set("auth-token", user.id, {
+      path: "/",
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7, // 1 week
+    });
+
+    return response;
   } catch (err) {
     console.error(err);
     return NextResponse.json(

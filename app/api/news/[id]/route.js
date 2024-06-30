@@ -5,6 +5,10 @@ export async function PUT(req, { params }) {
   const { id } = params;
   const { description, date } = await req.json();
   try {
+    const corsResponse = cors(req);
+    if (req.method === "OPTIONS") {
+      return corsResponse;
+    }
     // const result = await pool.query(
     //   "UPDATE news SET description = $1, date = $2 WHERE id = $3 RETURNING *",
     //   [description, date, id]
@@ -37,6 +41,10 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
+  const corsResponse = cors(req);
+  if (req.method === "OPTIONS") {
+    return corsResponse;
+  }
   const { id } = params;
   try {
     // await pool.query("DELETE FROM news WHERE id = $1", [id]);

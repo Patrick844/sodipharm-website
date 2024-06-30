@@ -44,14 +44,7 @@ const UpdateDeletePage = () => {
     try {
       await axios.put(
         process.env.NEXT_PUBLIC_URL + `api/articles/${id}`,
-        article,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-          },
-        }
+        article
       );
       alert("Article updated successfully!");
     } catch (error) {
