@@ -65,7 +65,7 @@ export async function POST(req, res) {
     response.cookies.set("auth-token", user.id, {
       path: "/",
       httpOnly: true,
-      secure: process.env.NEXT_PUBLIC_SECURE,
+      secure: true,
       maxAge: 60 * 60 * 24 * 7, // 1 week
     });
     console.log("cookie", response.cookies.get("auth-token"));
