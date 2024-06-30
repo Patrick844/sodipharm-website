@@ -22,7 +22,7 @@ const Login = () => {
     if (res.status === 200) {
       setSuccess(data.message);
       setError("");
-      router.push("admin/dashbord/main");
+      router.push("/admin/dashbord/");
     } else {
       setError(data.message);
       setSuccess("");
