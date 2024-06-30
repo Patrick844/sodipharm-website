@@ -22,7 +22,16 @@ const Login = () => {
     if (res.status === 200) {
       setSuccess(data.message);
       setError("");
-      router.push("/admin/dashbord/main/");
+      router
+        .push("/admin/dashbord/main/")
+        .then(() => {
+          // Success handling
+          console.log("Navigated successfully");
+        })
+        .catch((error) => {
+          // Error handling
+          console.error("Navigation error:", error);
+        });
     } else {
       setError(data.message);
       setSuccess("");
