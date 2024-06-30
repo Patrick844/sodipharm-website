@@ -20,6 +20,6 @@ export const pool_uri = new Pool({
   connectionString: process.env.NEXT_PUBLIC_DB_URI,
   ssl: {
     rejectUnauthorized: true,
-    ca: NEXT_PUBLIC_DB_CA,
+    ca: process.envNEXT_PUBLIC_DB_CA,
   },
 });
