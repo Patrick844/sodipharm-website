@@ -24,7 +24,13 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://main--sodipharm.netlify.app/api/news/${id}`);
+      await axios.delete(`https://main--sodipharm.netlify.app/api/news/${id}`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      });
       setnews(news.filter((news) => news.id !== id));
     } catch (error) {
       console.error("Error deleting news:", error);
@@ -42,7 +48,14 @@ const UpdateDeletePage = () => {
     try {
       await axios.put(
         `https://main--sodipharm.netlify.app/api/news/${id}`,
-        newss
+        newss,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          },
+        }
       );
       alert("News updated successfully!");
     } catch (error) {
