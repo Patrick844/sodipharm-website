@@ -16,6 +16,7 @@ export async function POST(req, res) {
       [username]
     );
 
+    console.log("rejreirjrijriejreijreirjerijerierjeirje");
     if (result.rows.length === 0) {
       return NextResponse.json(
         { message: "Invalid username or password" },

@@ -19,6 +19,8 @@ const Login = () => {
       data
     );
 
+    console.log("teygyzegzyegzyegzeyzezyegz");
+
     if (res.status === 200) {
       setSuccess(data.message);
       setError("");
