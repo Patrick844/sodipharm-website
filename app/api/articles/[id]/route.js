@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { pool, pool_uri } from "@/utils/db";
+import cors from "@/utils/cors";
 
 export async function PUT(req, { params }) {
+  await cors(req);
   const { id } = params;
   const { title, url, keywords } = await req.json();
   try {
@@ -35,6 +37,7 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
+  await cors(req);
   const { id } = params;
   try {
     // await pool.query("DELETE FROM articles WHERE id = $1", [id]);
