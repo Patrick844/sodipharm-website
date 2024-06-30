@@ -14,7 +14,10 @@ const Login = () => {
     e.preventDefault();
 
     const data = JSON.stringify({ username: username, password: password });
-    const res = await axios.post("https://localhost:3000/api/login", data);
+    const res = await axios.post(
+      "https://main--sodipharm.netlify.app/api/login",
+      data
+    );
 
     if (res.status === 200) {
       setSuccess(data.message);

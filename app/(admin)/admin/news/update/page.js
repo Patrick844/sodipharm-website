@@ -10,7 +10,9 @@ const UpdateDeletePage = () => {
   useEffect(() => {
     async function getData() {
       try {
-        const result = await axios.get("https://localhost:3000/api/news");
+        const result = await axios.get(
+          "https://main--sodipharm.netlify.app/api/news"
+        );
         setnews(result.data);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -22,7 +24,7 @@ const UpdateDeletePage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://localhost:3000/api/news/${id}`);
+      await axios.delete(`https://main--sodipharm.netlify.app/api/news/${id}`);
       setnews(news.filter((news) => news.id !== id));
     } catch (error) {
       console.error("Error deleting news:", error);
@@ -38,7 +40,10 @@ const UpdateDeletePage = () => {
   const handleSave = async (id) => {
     const newss = news.find((item) => item.id === id);
     try {
-      await axios.put(`https://localhost:3000/api/news/${id}`, newss);
+      await axios.put(
+        `https://main--sodipharm.netlify.app/api/news/${id}`,
+        newss
+      );
       alert("News updated successfully!");
     } catch (error) {
       console.error("Error saving updates:", error);

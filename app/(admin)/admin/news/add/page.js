@@ -31,7 +31,10 @@ const NewsForm = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const data = JSON.stringify(formData);
-    const result = await axios.post("https://localhost:3000/api/news", data);
+    const result = await axios.post(
+      "https://main--sodipharm.netlify.app/api/news",
+      data
+    );
     if (result.status === 200) {
       setBannerMessage("News added successfully!");
       setIsBannerVisible(true);
