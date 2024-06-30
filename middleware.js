@@ -5,9 +5,12 @@ export function middleware(req) {
     const url = req.nextUrl.clone();
     const token = req.cookies.get("auth-token");
     console.log("middleware");
+    console.log(token);
+    console.warn(token);
 
     // Check if the request is for a protected route
     if (url.pathname.startsWith("/admin/dashbord/main") && !token) {
+      console.warn("here");
       // Redirect to the login page if not authenticated
       url.pathname = "/admin";
       return NextResponse.redirect(url);
