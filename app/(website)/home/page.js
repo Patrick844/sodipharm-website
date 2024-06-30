@@ -10,7 +10,7 @@ export default function HomePage() {
   const [articles, setArticles] = useState("");
   const [news, setnews] = useState("");
 
-  console.log(process.env.NEXT_PUBLIC_URL);
+  console.log(process.env.NEXT_PUBLIC_DB_URI);
   useEffect(() => {
     const fetchArticles = async () => {
       try {
