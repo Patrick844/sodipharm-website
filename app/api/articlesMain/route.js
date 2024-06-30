@@ -6,9 +6,7 @@ import { pool, pool_uri } from "@/utils/db";
 export async function GET() {
   try {
     // const result = await pool.query("SELECT * FROM articles articles limit 4");
-    const result = await pool_uri.query(
-      "SELECT * FROM articles articles limit 4"
-    );
+    const result = await pool_uri.query("SELECT * FROM articles limit 4");
 
     return NextResponse.json(result.rows);
   } catch (err) {
