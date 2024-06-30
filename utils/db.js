@@ -20,6 +20,6 @@ export const pool_uri = new Pool({
   connectionString: process.env.NEXT_PUBLIC_DB_URI,
   ssl: {
     rejectUnauthorized: true,
-    ca: fs.readFileSync(".././certificate/ca.pem").toString(),
+    ca: NEXT_PUBLIC_DB_CA,
   },
 });
