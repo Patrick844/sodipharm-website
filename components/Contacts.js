@@ -23,7 +23,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="sm:mt-12 mt-48 min-h-screen bg-gray-100">
+    <div className="sm:mt-12 min-h-screen bg-gray-100">
       <Head>
         <title>Contact Us - Company Name</title>
         <meta

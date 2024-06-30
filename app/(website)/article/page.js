@@ -35,7 +35,7 @@ const ArticlesPage = () => {
   console.log(article_obj);
   return (
     <div>
-      <h1 className="sm:mt-16 mt-48 pt-4 sm:text-6xl text-3xl font-bold text-center">
+      <h1 className="sm:mt-16  pt-4 sm:text-6xl text-3xl font-bold text-center">
         Articles
       </h1>
 
