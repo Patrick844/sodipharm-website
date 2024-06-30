@@ -1,6 +1,7 @@
 import { compare } from "bcrypt";
 import { pool, pool_uri, client } from "@/utils/db";
 import { NextResponse } from "next/server";
+import Cookies from "cookies-js";
 
 export async function POST(req, res) {
   const { username, password } = await req.json();
@@ -70,12 +71,6 @@ export async function POST(req, res) {
     });
 
     // Set the auth-token cookie
-    response.cookies.set("auth-token", user.id, {
-      path: "/",
-      httpOnly: false,
-      maxAge: 60 * 60 * 24 * 7, // 1 week
-    });
-    console.log("cookie", response.cookies.get("auth-token"));
 
     return response;
   } catch (err) {
