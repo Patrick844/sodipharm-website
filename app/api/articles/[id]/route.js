@@ -37,7 +37,7 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(req, { params }) {
-  await cors(req);
+  await cors(req, { params });
   const { id } = params;
   try {
     // await pool.query("DELETE FROM articles WHERE id = $1", [id]);
