@@ -11,12 +11,17 @@ export async function POST(req, res) {
     // ]);
     console.log("login");
 
+    try {
+      await pool_uri.connect();
+      console.log("Connected to PostgreSQL database on Aiven");
+      // Perform database operations here
+    } catch (err) {
+      console.error("Error connecting to PostgreSQL:", err.message);
+    }
     const result = await pool_uri.query(
       "SELECT * FROM users WHERE username = $1",
       [username]
     );
-    console.log("rr");
-    console.log("t");
 
     if (result.rows.length === 0) {
       return NextResponse.json(

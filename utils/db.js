@@ -7,5 +7,4 @@ dotenv.config();
 
 export const pool_uri = new Pool({
   connectionString: process.env.NEXT_PUBLIC_DB_URI,
-  rejectUnauthorized: true,
 });
