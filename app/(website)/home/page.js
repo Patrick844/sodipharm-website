@@ -16,7 +16,7 @@ export default function HomePage() {
     const fetchArticles = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/articlesMain"
+          "https://localhost:3000/api/articlesMain"
         );
         setArticles(() => {
           const data = response.data;
@@ -32,7 +32,7 @@ export default function HomePage() {
 
     const fetchNews = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/newsMain");
+        const response = await axios.get("https://localhost:3000/api/newsMain");
         setnews(() => {
           const data = response.data;
           const news_obj = data.map((item, index) => (

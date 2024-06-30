@@ -31,7 +31,7 @@ const NewsForm = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     const data = JSON.stringify(formData);
-    const result = await axios.post("http://localhost:3000/api/news", data);
+    const result = await axios.post("https://localhost:3000/api/news", data);
     if (result.status === 200) {
       setBannerMessage("News added successfully!");
       setIsBannerVisible(true);
@@ -99,7 +99,7 @@ const NewsForm = () => {
         >
           <svg
             class="w-4 h-4 inline-block mr-1"
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
