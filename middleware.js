@@ -7,7 +7,7 @@ export function middleware(req) {
   console.log("middleware");
 
   // Check if the request is for a protected route
-  if (url.pathname.startsWith("/admin") && !token) {
+  if (url.pathname.startsWith("/admin/dashbord/main") && !token) {
     // Redirect to the login page if not authenticated
     url.pathname = "/admin";
     return NextResponse.redirect(url);
