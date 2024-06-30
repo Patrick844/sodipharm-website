@@ -15,7 +15,7 @@ const Login = () => {
 
     const data = JSON.stringify({ username: username, password: password });
     const res = await axios.post(
-      "https://main--sodipharm.netlify.app/api/login",
+      process.env.NEXT_PUBLIC_URL + "api/login",
       data
     );
 

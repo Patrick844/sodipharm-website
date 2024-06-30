@@ -11,7 +11,7 @@ const UpdateDeletePage = () => {
     async function getData() {
       try {
         const result = await axios.get(
-          "https://main--sodipharm.netlify.app/api/news"
+          process.env.NEXT_PUBLIC_URL + "api/news"
         );
         setnews(result.data);
       } catch (error) {

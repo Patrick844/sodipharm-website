@@ -1,5 +1,5 @@
 import { compare } from "bcrypt";
-import { pool, pool_uri } from "@/utils/db";
+import { pool, pool_uri, client } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export async function POST(req, res) {
@@ -9,10 +9,13 @@ export async function POST(req, res) {
     // const result = await pool.query("SELECT * FROM users WHERE username = $1", [
     //   username,
     // ]);
+    console.log("login");
+
     const result = await pool_uri.query(
       "SELECT * FROM users WHERE username = $1",
       [username]
     );
+    console.log("rr");
     console.log("t");
 
     if (result.rows.length === 0) {

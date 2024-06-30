@@ -16,7 +16,7 @@ export default function HomePage() {
     const fetchArticles = async () => {
       try {
         const response = await axios.get(
-          "https://main--sodipharm.netlify.app/api/articlesMain"
+          process.env.NEXT_PUBLIC_URL + "api/articlesMain"
         );
         setArticles(() => {
           const data = response.data;
@@ -33,7 +33,7 @@ export default function HomePage() {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          "https://main--sodipharm.netlify.app/api/newsMain"
+          process.env.NEXT_PUBLIC_URL + "api/newsMain"
         );
         setnews(() => {
           const data = response.data;

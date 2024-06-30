@@ -32,7 +32,7 @@ const NewsForm = () => {
     event.preventDefault();
     const data = JSON.stringify(formData);
     const result = await axios.post(
-      "https://main--sodipharm.netlify.app/api/news",
+      process.env.NEXT_PUBLIC_URL + "api/news",
       data
     );
     if (result.status === 200) {
