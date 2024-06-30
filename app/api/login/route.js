@@ -51,8 +51,16 @@ export async function POST(req, res) {
 
     console.log(process.env.NEXT_PUBLIC_URL);
     const response = NextResponse.redirect(
-      process.env.NEXT_PUBLIC_URL + "admin/dashbord/main"
+      process.env.NEXT_PUBLIC_URL + "admin/dashbord/main",
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+      }
     );
+
     // Set the auth-token cookie
     response.cookies.set("auth-token", user.id, {
       path: "/",
