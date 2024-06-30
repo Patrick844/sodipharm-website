@@ -61,6 +61,14 @@ export async function POST(req, res) {
       }
     );
 
+    Cookies.set("auth-token", user.id, {
+      httpOnly: true,
+      expires: 60 * 60 * 24 * 7,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+    });
+
     // Set the auth-token cookie
     response.cookies.set("auth-token", user.id, {
       path: "/",
