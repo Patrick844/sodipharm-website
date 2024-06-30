@@ -15,6 +15,8 @@ export async function POST(req, res) {
       [username]
     );
 
+    console.log("result ", result);
+
     if (result.rows.length === 0) {
       return NextResponse.json(
         { message: "Invalid username or password" },
@@ -62,9 +64,10 @@ export async function POST(req, res) {
     // Set the auth-token cookie
     response.cookies.set("auth-token", user.id, {
       path: "/",
-      httpOnly: true,
+      httpOnly: false,
       maxAge: 60 * 60 * 24 * 7, // 1 week
     });
+    console.log("cookie", response.cookies.get("auth-token"));
 
     return response;
   } catch (err) {
