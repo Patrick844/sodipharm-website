@@ -5,11 +5,12 @@ import axios from "axios";
 import Cards from "@/components/Cards";
 import News from "@/components/News";
 
-export default function HomePage() {
+export default function Page() {
   const [articles, setArticles] = useState("");
   const [news, setnews] = useState("");
 
   useEffect(() => {
+    console.log("test home");
     const fetchArticles = async () => {
       try {
         const response = await axios.get("api/articlesMain");
