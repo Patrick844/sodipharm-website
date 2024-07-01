@@ -6,14 +6,17 @@ import Cards from "@/components/Cards";
 import News from "@/components/News";
 
 export default function Page() {
-  const [articles, setArticles] = useState("");
-  const [news, setnews] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
     console.log("test home");
+
     const fetchArticles = async () => {
+      console.log("Fetching articles...");
       try {
-        const response = await axios.get("api/articlesMain");
+        const response = await axios.get("/api/articlesMain");
+        console.log("Articles fetched:", response.data);
         setArticles(() => {
           const data = response.data;
           const articles_obj = data.map((article, index) => (
@@ -27,9 +30,11 @@ export default function Page() {
     };
 
     const fetchNews = async () => {
+      console.log("Fetching news...");
       try {
-        const response = await axios.get("api/newsMain");
-        setnews(() => {
+        const response = await axios.get("/api/newsMain");
+        console.log("News fetched:", response.data);
+        setNews(() => {
           const data = response.data;
           const news_obj = data.map((item, index) => (
             <News key={index} props={item} />
@@ -37,15 +42,21 @@ export default function Page() {
           return news_obj;
         });
       } catch (error) {
-        console.error("Error fetching articles:", error);
+        console.error("Error fetching news:", error);
       }
     };
-
-    console.log(articles);
 
     fetchArticles();
     fetchNews();
   }, []);
+
+  useEffect(() => {
+    console.log("Articles state updated:", articles);
+  }, [articles]);
+
+  useEffect(() => {
+    console.log("News state updated:", news);
+  }, [news]);
 
   return (
     <div>
@@ -55,10 +66,9 @@ export default function Page() {
         <p className="inline text-5xl px-4 ">News</p>
         <hr className="w-1/4 border-t-2 border-gray-300 my-4" />
       </div>
-      <div className="flex flex-col ml-10  sm:ml-40 justify-evenly mb-7">
+      <div className="flex flex-col ml-10 sm:ml-40 justify-evenly mb-7">
         {news}
       </div>
-      <div className="flex justify-evenly mb-7"></div>
       <div className="text-center flex justify-center items-center my-8">
         <hr className="w-1/4 border-t-2 border-gray-300 my-4" />
         <p className="inline text-5xl px-4 ">Articles</p>

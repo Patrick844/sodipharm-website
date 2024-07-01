@@ -6,7 +6,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import LoadingScreen from "@/components/Loading";
 
-export default function Page() {
+export default function HomePage() {
   const router = useRouter();
-  router.push("/home");
+  router.push("/acceuil");
+  return <div>loading</div>;
 }
