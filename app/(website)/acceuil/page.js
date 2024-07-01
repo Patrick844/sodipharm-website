@@ -15,10 +15,10 @@ export default function Page() {
     const fetchArticles = async () => {
       console.log("Fetching articles...");
       try {
-        const response = await axios.get("/api/articlesMain");
+        const response = await axios.get("/api/articles");
         console.log("Articles fetched:", response.data);
         setArticles(() => {
-          const data = response.data;
+          const data = response.data.slice(0, 4);
           const articles_obj = data.map((article, index) => (
             <Cards key={index} props={article} />
           ));
@@ -32,10 +32,10 @@ export default function Page() {
     const fetchNews = async () => {
       console.log("Fetching news...");
       try {
-        const response = await axios.get("/api/newsMain");
+        const response = await axios.get("/api/news");
         console.log("News fetched:", response.data);
         setNews(() => {
-          const data = response.data;
+          const data = response.data.slice(0, 4);
           const news_obj = data.map((item, index) => (
             <News key={index} props={item} />
           ));
