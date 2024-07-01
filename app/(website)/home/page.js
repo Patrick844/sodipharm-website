@@ -1,5 +1,4 @@
 "use client";
-import Navbar from "@/components/NavBar";
 import Main from "@/components/Main";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -13,9 +12,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await axios.get(
-          process.env.NEXT_PUBLIC_URL + "api/articlesMain"
-        );
+        const response = await axios.get("api/articlesMain");
         setArticles(() => {
           const data = response.data;
           const articles_obj = data.map((article, index) => (
@@ -30,9 +27,7 @@ export default function HomePage() {
 
     const fetchNews = async () => {
       try {
-        const response = await axios.get(
-          process.env.NEXT_PUBLIC_URL + "api/newsMain"
-        );
+        const response = await axios.get("api/newsMain");
         setnews(() => {
           const data = response.data;
           const news_obj = data.map((item, index) => (
