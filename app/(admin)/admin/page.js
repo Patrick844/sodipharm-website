@@ -1,6 +1,7 @@
 "use client";
+
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Use `next/router` instead of `next/navigation`
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -17,24 +18,27 @@ const Login = () => {
     e.preventDefault();
 
     const data = JSON.stringify({ username: username, password: password });
-    const res = await axios.post(
-      process.env.NEXT_PUBLIC_URL + "api/login",
-      data
-    );
+    try {
+      const res = await axios.post(
+        process.env.NEXT_PUBLIC_URL + "api/login",
+        data
+      );
 
-    if (res.status === 200) {
-      setSuccess(data.message);
-      setError("");
-      try {
-        router.push("/admin/dashbord/main/");
-      } catch (error) {
-        console.error("Navigation error : ", error);
+      if (res.status === 200) {
+        setSuccess("Login successful");
+        setError("");
+        router.push("/admin/dashboard/main/");
+      } else {
+        setError("Invalid credentials");
+        setSuccess("");
       }
-    } else {
-      setError(data.message);
+    } catch (error) {
+      console.error("Error during login:", error);
+      setError("Server Error");
       setSuccess("");
     }
   };
+
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -46,8 +50,8 @@ const Login = () => {
         {error && <p className="text-red-500">{error}</p>}
         {success && <p className="text-green-500">{success}</p>}
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="username">
+          <div className="mb-4 flex items-center">
+            <label className="block text-gray-700 mb-2 mr-2" htmlFor="username">
               Username
             </label>
             <input
@@ -59,8 +63,8 @@ const Login = () => {
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2" htmlFor="password">
+          <div className="mb-4 flex items-center">
+            <label className="block text-gray-700 mb-2 mr-2" htmlFor="password">
               Password
             </label>
             <input
@@ -68,13 +72,13 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border rounded shadow focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2 border rounded shadow block focus:outline-none focus:border-blue-500"
               required
             />
             <button
               type="button"
               onClick={toggleShowPassword}
-              className="relative left-80 ml-5 -inset-y-7 sm:left-80 sm:ml-10 flex items-center px-4 text-gray-500 hover:text-gray-700 focus:outline-none"
+              className="ml-2 inline-block text-gray-600 focus:outline-none"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
