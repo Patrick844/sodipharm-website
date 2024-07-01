@@ -46,6 +46,8 @@ export default function HomePage() {
       }
     };
 
+    console.log(articles);
+
     fetchArticles();
     fetchNews();
   }, []);

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { pool, pool_uri } from "@/utils/db";
+import cors from "@/utils/cors";
 
 export async function PUT(req, { params }) {
   const { id } = params;
