@@ -27,7 +27,7 @@ const Login = () => {
       if (res.status === 200) {
         setSuccess("Login successful");
         setError("");
-        router.push("/admin/dashboard/main/");
+        router.push("/admin/dashbord/main/");
       } else {
         setError("Invalid credentials");
         setSuccess("");
