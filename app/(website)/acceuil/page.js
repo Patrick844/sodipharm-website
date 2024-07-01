@@ -15,7 +15,7 @@ export default function Page() {
     const fetchArticles = async () => {
       console.log("Fetching articles...");
       try {
-        const response = await axios.get("/api/articles");
+        const response = await axios.get("/api/articlesMain");
         console.log("Articles fetched:", response.data);
         setArticles(() => {
           const data = response.data;
